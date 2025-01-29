@@ -1032,6 +1032,17 @@
     "scoreLabel": {
       "__id__": 45
     },
+    "camera": {
+      "__id__": 4
+    },
+    "targetOrthoHeight": 500,
+    "targetColor": {
+      "__type__": "cc.Color",
+      "r": 1,
+      "g": 102,
+      "b": 17,
+      "a": 255
+    },
     "_id": "91ABJUCoFJY7oVtjdZvGy3"
   },
   {
