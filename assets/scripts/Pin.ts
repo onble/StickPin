@@ -14,7 +14,7 @@ export class Pin extends Component {
     }
 
     onBeginContact() {
-        console.log("contact");
+        GameManager.inst.gameOver();
     }
     moveTo(targetPos: Vec3, duration: number = 1, parentNode: Node = null) {
         tween(this.node)

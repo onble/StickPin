@@ -1,5 +1,6 @@
 import { _decorator, Component, input, Input, instantiate, Label, Node, Prefab } from "cc";
 import { Pin } from "./Pin";
+import { Circle } from "./Circle";
 const { ccclass, property } = _decorator;
 
 @ccclass("GameManager")
@@ -36,6 +37,7 @@ export class GameManager extends Component {
 
     private curPin: Pin = null;
     private score: number = 0;
+    private isGameOver: boolean = false;
 
     start() {
         this.pinSpawn();
@@ -44,6 +46,7 @@ export class GameManager extends Component {
     update(deltaTime: number) {}
 
     onTouchStart() {
+        if (this.isGameOver) return;
         this.curPin.moveTo(this.p3.position, this.moveDuiation, this.circleNode);
         this.pinSpawn();
     }
@@ -64,6 +67,14 @@ export class GameManager extends Component {
         } else {
             console.error("你实例化的针身上没有Pin组件，请检查。");
         }
+    }
+
+    gameOver() {
+        // 确保游戏结束函数只会被调用一次
+        if (this.isGameOver) return;
+        this.isGameOver = true;
+
+        this.circleNode.getComponent(Circle).stopRotate();
     }
 
     protected onDestroy(): void {

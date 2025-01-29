@@ -5,9 +5,17 @@ const { ccclass, property } = _decorator;
 export class Circle extends Component {
     @property
     ratateSpeed: number = 90;
+
+    private isRotate: boolean = true;
     start() {}
 
     update(deltaTime: number) {
+        if (this.isRotate == false) return;
         this.node.angle -= this.ratateSpeed * deltaTime;
+    }
+
+    stopRotate() {
+        console.log("stopRotate");
+        this.isRotate = false;
     }
 }
